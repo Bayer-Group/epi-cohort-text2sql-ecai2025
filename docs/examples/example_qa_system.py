@@ -39,7 +39,7 @@ async def answer_question(config: Dict[str, Any]):
 
 if __name__ == "__main__":
     base_dir = Path(__file__).resolve().parent.parent.parent
-    querylib_file = base_dir / "querylib_20250825.db"
+    querylib_file = base_dir / "querylib_20251019.db"
     log_directory = base_dir / "logs"
     log_directory.mkdir(parents=True, exist_ok=True)
 

@@ -100,7 +100,7 @@ For more information, please refer to the manuscript.
 | File | Description |
 |------|-------------|
 | `querylib_20251019.db` | **Current version (recommended).** Fixes runnable SQL that was truncated in the original release ([#1](https://github.com/Bayer-Group/epi-cohort-text2sql-ecai2025/issues/1)). |
-| `querylib_20250825.db` | Original version used for the experiments in the paper. |
+| `querylib_20250825.db` | Original release, kept for archival purposes. |
 
 Changes in `querylib_20251019.db`:
 
@@ -167,7 +167,7 @@ epi-cohort-text2sql-ecai2025/
 │   └── utils/               # 🔧 Utility functions
 ├── docs/examples/           # 📋 Usage examples
 ├── querylib_20251019.db    # 🗃️ Query knowledge base (EpiAskKB and EpiCohortKB), current version
-├── querylib_20250825.db    # 🗃️ Original version used in the paper (truncated runnable SQL, see below)
+├── querylib_20250825.db    # 🗃️ Original release, kept for archival purposes
 └── requirements.txt         # 📝 Dependencies
 ```
 

@@ -127,7 +127,7 @@ async def calculate_cohort(config: dict):
 if __name__ == "__main__":
 
     default_config = {
-        "querylib_file": "querylib_20250825.db",
+        "querylib_file": "querylib_20251019.db",
         "max_nb_row": 10**7,
         "preferred_coding_system": {
             "condition": ["SNOMED"],

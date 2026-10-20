@@ -95,6 +95,21 @@ These knowledge bases enable the RAG-enhanced generation process described in ou
 
 For more information, please refer to the manuscript.
 
+### Query library versions
+
+| File | Description |
+|------|-------------|
+| `querylib_20251019.db` | **Current version (recommended).** Fixes runnable SQL that was truncated in the original release ([#1](https://github.com/Bayer-Group/epi-cohort-text2sql-ecai2025/issues/1)). |
+| `querylib_20250825.db` | Original version used for the experiments in the paper. |
+
+Changes in `querylib_20251019.db`:
+
+- **No truncated SQL.** In the original file, 91 values of `QUERY_SNOWFLAKE_RUNNABLE` were cut off at 32,767 characters because of their long medical code lists. All 108 cohort queries (`COHORT_GENERATOR`) now have complete runnable SQL, with code lists regenerated as OMOP Standard concept IDs. They were checked by running them on OMOP databases (SynPUF and Optum). The code lists differ from the original, which included codes that matched no records or were off-topic.
+- **Fixed queries.** Cohort queries 110, 116, 126, 162 and 186, which failed or returned no patients, were fixed. QA queries 68 and 105, whose runnable SQL still contained placeholders, were filled in.
+- **Changed templates.** `QUERY_SNOWFLAKE_WITH_PLACEHOLDERS` changed for queries 110, 116, 126 and 162. Benchmark results on these queries may differ slightly from those reported in the paper. All other templates, questions and embeddings are unchanged.
+
+Note: the evaluation in the paper used only the templated queries (`QUERY_SNOWFLAKE_WITH_PLACEHOLDERS`). Medical codes were resolved and filled in at query time, so the truncated `QUERY_SNOWFLAKE_RUNNABLE` column did not affect the reported results.
+
 ## 🛠️ Installation
 
 ### Prerequisites
@@ -151,7 +166,8 @@ epi-cohort-text2sql-ecai2025/
 │   ├── db/                  # 🗄️ Database connections
 │   └── utils/               # 🔧 Utility functions
 ├── docs/examples/           # 📋 Usage examples
-├── querylib_20250825.db    # 🗃️ Query knowledge base (EpiAskKB and EpiCohortKB)
+├── querylib_20251019.db    # 🗃️ Query knowledge base (EpiAskKB and EpiCohortKB), current version
+├── querylib_20250825.db    # 🗃️ Original version used in the paper (truncated runnable SQL, see below)
 └── requirements.txt         # 📝 Dependencies
 ```
 
